@@ -1,0 +1,18 @@
+.container {
+    max-width: 1300px;
+    min-width: 991px;
+    margin: 0 auto;
+}
+
+.remove-btn {
+    margin-left: 15px;
+}
+
+.error {
+    border: 5px solid red;
+}
+
+.checkbox {
+    text-decoration: line-through;
+    color: red;
+}
