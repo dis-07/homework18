@@ -11,25 +11,25 @@ function createTodo (){
     li.innerHTML = todoInput.value;
     ul.append(li);
 
-    const button = document.createElement('button');
-    button.innerHTML = 'Delete';
-    button.className = 'remove-btn';
-    li.append(button);
+    const DeleteButton = document.createElement('button');
+    DeleteButton.innerHTML = 'Delete';
+    DeleteButton.className = 'remove-btn';
+    li.append(DeleteButton);
 
     const checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
     checkBox.setAttribute('id', 'accept');
     li.prepend(checkBox);
 
-    ul.onchange = (event) => {
-        const check = event.target.checked;
+    // ul.onchange = (event) => {
+    //     const check = event.target.checked;
 
-        if(check) {
-            li.classList.add('checkbox');
-            checkBox.setAttribute('disabled' ,'disabled');
-            button.setAttribute('disabled' ,'disabled');
-        }
-    }
+    //     if(check) {
+    //         li.classList.add('checkbox');
+    //         checkBox.setAttribute('disabled' ,'disabled');
+    //         button.setAttribute('disabled' ,'disabled');
+    //     }
+    // }
 }
 
 ul.addEventListener('click', (event) => {
@@ -41,6 +41,21 @@ ul.addEventListener('click', (event) => {
         albumsTitle.remove();
     }
 });
+
+ul.onchange = (event) => {
+    const check = event.target.checked;
+
+    if(check) {
+        const checked = event.target.closest('.todo-list');
+        checked.classList.add('checkbox');
+        
+        const disabledBox = checked.querySelector('#accept');
+        disabledBox.setAttribute('disabled','');
+
+        const disabledButton = checked.querySelector('.remove-btn');
+        disabledButton.setAttribute('disabled', '');
+    }
+}
 
 form.onsubmit = (event) => {
     event.preventDefault();
